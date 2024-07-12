@@ -3,17 +3,17 @@ name: Python CI
 on:
     push:
         branches:
-            - [main]
+            - ["main"]
     pull_request:
         branches:
-            - [main]
+            - ["main"]
 
 jobs:
     build:
         runs-on: ubuntu-latest
 
         steps:
-            - name: Project
+            - name: Hacer checkout del proyecto
               uses: actions/checkout@v4
 
             - name: Configurar python
