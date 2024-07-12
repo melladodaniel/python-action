@@ -1,27 +1,14 @@
 import pytest
-from main import app, db, Book, Author, Genre
+from main import app
 import json
+import pytest
 
-@pytest.fixture
+@pytest.fixture(scope='module')
 def client():
-    app.config['TESTING'] = True
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:' 
     with app.test_client() as client:
-        with app.app_context():
-            db.create_all()
-            # Crear datos de prueba
-            author = Author(Name="Author Test")
-            genre = Genre(Name="Genre Test")
-            db.session.add(author)
-            db.session.add(genre)
-            db.session.commit()
-            book = Book(Title="Test Book", Isbn="1234567890123", Price=9.99, Quantity=10, Author_id=author.idAuthor, Genre_id=genre.idGenre)
-            db.session.add(book)
-            db.session.commit()
         yield client
-        with app.app_context():
-            db.drop_all()
 
+@pytest.mark.order(1)
 def test_get_main(client):
     response = client.get('/')
     json_data = response.get_json()
