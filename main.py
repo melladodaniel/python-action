@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
+"""
 app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+mysqlconnector://root:password@172.17.0.2/book-inventory"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
@@ -37,13 +38,14 @@ class Genre(db.Model):
 
     def __repr__(self):
         return f'<Commit {self.Name}>'
-
+"""
 ### Routes ###
 
 @app.route('/', methods=['GET'])
 def main():
     return jsonify({'message': 'hola'}), 200
 
+"""
 @app.route('/books', methods=['GET'])
 def getBooks():
     books = Book.query.all()
@@ -128,7 +130,7 @@ def getBooksByGenre(id):
         }
         output.append(book_genre_data)
     return jsonify(output), 200
-
+"""
 
 if __name__ == '__main__':
     app.run(port=5555)
