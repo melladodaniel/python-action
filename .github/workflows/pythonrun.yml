@@ -28,7 +28,7 @@ jobs:
       run: pip freeze
 
     - name: Ejecutar pruebas
-      run: pytest tests/test_main.py
+      run: python -m pytest tests
 
     - name: Compilación exitosa
       if: success()
