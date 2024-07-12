@@ -1,5 +1,5 @@
 import pytest
-from main import app, db, Book, Author, Genre
+from src.main import app, db, Book, Author, Genre
 import json
 
 @pytest.fixture
