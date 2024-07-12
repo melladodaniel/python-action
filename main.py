@@ -1,5 +1,7 @@
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
+from sqlite3 import IntegrityError
+from sqlalchemy import text
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
@@ -133,4 +135,4 @@ def getBooksByGenre(id):
 """
 
 if __name__ == '__main__':
-    app.run(port=5555)
+    app.run(port=5001)
