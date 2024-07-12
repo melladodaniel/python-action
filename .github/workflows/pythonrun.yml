@@ -24,8 +24,12 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
+    - name: Verificar dependencias instaladas
+      run: pip freeze
+
     - name: Ejecutar pruebas
-      run: pytest test-main.py
+      run: pytest tests/test_main.py
 
     - name: Compilación exitosa
+      if: success()
       run: echo "compilación exitosa"
